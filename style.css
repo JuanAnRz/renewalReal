@@ -1,0 +1,297 @@
+/*---------------------------------------------Para todo--------------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+}
+@font-face {
+    font-family: 'Local';
+    src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype'),
+         url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Localv';
+    src: url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype'),
+         url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  
+    font-style: normal;
+    font-display: swap;
+}
+/* optional bold variant */
+@font-face {
+    font-family: 'LocalItalic';
+    src: url('/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf') format('truetype'),
+         url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+    font-display: swap;
+}
+body {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Local', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+/*-------------------------Navegador----------------------------*/
+nav {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 60px;
+    background-color: #ecececc8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    padding: 0 16px; /* evita que el enlace toque el borde */
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 50%;
+}
+#user:hover {
+    background-color: #333;
+    color: white;
+}
+#search, #search-m{
+    display: none;
+    height: 40px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #484848;
+}
+#sButton{
+    display: none;
+    transition: all 0.3s forwards;
+}
+label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 2px solid #333;
+    border-radius: 50%;
+}
+label:hover {
+    background-color: #484848;
+    color: white;
+}
+
+#sButton:checked ~ #search {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 70px;
+    right: auto;
+}
+
+@media screen and (max-width:1200px) {
+    
+    div:has(#sButton:checked) ~ div{
+        display: none;
+    }
+}
+#menu{
+    left: 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    display: none;
+    padding: 60px 20px;
+    gap: 20px;
+    height: 100svh;
+    width: 100svw;
+}
+#menu-button{
+    display: none;
+}
+label[for="menu-button"]{
+    position: fixed;
+    z-index: 1001;
+}
+#menu-button:checked ~ #menu{
+    
+    background-color: #ececece4;
+    border-bottom: 1px solid #444;
+    display: flex;
+}
+#menu a{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: dotted;
+}
+
+#search-res{
+    position: absolute;
+    left: 70px;
+    top: 60px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+}
+#search-res-m{
+    display: none;
+    position: absolute;
+    left: 70px;
+    top: 60px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+}
+#menu-button:checked ~ #menu #search-res-m{
+    top: 100px;
+    width: 100%;
+    max-width: 300px;
+    left: --webkit-calc(50% - 150px);
+    display: flex;
+}
+#menu-button:checked ~ #menu #search-m{
+    display: flex;
+    width: 100%;
+}
+.card{
+    height:fit-content;
+    border-bottom: 1px solid #ddd; 
+    padding: 15px; 
+    background: white;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: localv, sans-serif;
+    width: 100%;
+}
+.card h3{
+    font-size: 16px;
+    font-family: LocalItalic, sans-serif;
+}
+/*------------------------Header---------------------*/
+
+header {
+    margin-top: 60px; /* para que no quede debajo del nav */
+    height: 400px;
+    width: 100%;
+    background-color: #333;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.79);
+}
+header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+/*------------------------Main---------------------*/
+main {
+    flex: 1;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+aside {
+    width: 350px;
+    padding: 20px;
+    border-right: 1px solid #757575;
+}
+main section {
+    flex: 1;
+    padding: 20px;
+}
+@media screen and (max-width:720px) {
+    aside{
+        width: 100%;
+    }
+    main{
+        flex-wrap: wrap;
+    }
+}
+aside ul li {
+    margin-bottom: 10px;
+    list-style:inside;
+}
+
+/*---------------Responsive-------------*/
+
+@media screen and (max-width:580px) {
+    nav a{
+        font-size: 14px;
+    }
+    nav{
+        height: 50px;
+    }
+    #menu-large{
+        display: none;
+    }
+    header{
+        margin-top: 50px;
+        height: 300px;
+    }
+    #sLabel{
+        display: none;
+    }
+    label, #user{
+        height: 30px;
+        width: 30px;
+        font-size: 14px;
+    }
+
+    #search-res{
+        display: none;
+    }
+}
+@media screen and (min-width:581px){
+    #menu-button, label[for="menu-button"]{
+        display: none;
+    }
+}
